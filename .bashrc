@@ -187,11 +187,17 @@ function tmux_automatically_attach_session()
 }
 tmux_automatically_attach_session
 
+# Homebrew
+
+if [[ -z $TMUX ]]; then
+    export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH
+fi
 
 # ghq setting.
 
-export GOPATH=$HOME
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export GOBIN=$GOPATH/bin
 
 function ghql() {
   local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
@@ -206,4 +212,3 @@ function ghql() {
 
 bind -x '"\201": ghql'
 bind '"\C-g":"\201\C-m"'
-
