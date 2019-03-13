@@ -2,6 +2,8 @@
 
 DOTPATH=~/.dotfiles
 
+mkdir .dotfiles
+
 # git が使えるなら git
 
 if type "git" > /dev/null 2>&1
