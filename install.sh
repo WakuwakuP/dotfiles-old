@@ -33,7 +33,7 @@ fi
 
 cd ~/.dotfiles
 if [ $? -ne 0 ]; then
-    die "not found: $DOTPATH"
+    echo "not found: $DOTPATH"
 fi
 
 # 移動できたらリンクを実行する
