@@ -6,11 +6,11 @@ mkdir ~/.dotfiles
 
 # homebrew インストール
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+if !(type "brew" > /dev/null 2>&1); then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+fi
 
-if type "brew" > /dev/null 2>&1
-then
-    brew tmux peco ghq
+brew install tmux peco ghq
 
 # git が使えるなら git
 
