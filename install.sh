@@ -4,7 +4,7 @@ DOTPATH=~/.dotfiles
 
 if [ -e $DOTPATH ]; then
     rm -rf $DOTPATH
-else
+fi
 
 # git が使えるなら git
 
