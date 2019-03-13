@@ -2,7 +2,9 @@
 
 DOTPATH=~/.dotfiles
 
-mkdir ~/.dotfiles
+if [ -e $DOTPATH ]; then
+    rm -rf $DOTPATH
+else
 
 # git が使えるなら git
 
