@@ -7,6 +7,7 @@ mkdir ~/.dotfiles
 # homebrew インストール
 
 if !(type "brew" > /dev/null 2>&1); then
+    echo "\033[0;32mInstall Homebrew.\033[0;39m"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 fi
 
