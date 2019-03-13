@@ -55,3 +55,6 @@ do
 
     ln -snfv "$DOTPATH/$f" "$HOME/$f"
 done
+
+# Copy fonts
+cp -r .dotfiles/.local .local
