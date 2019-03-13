@@ -114,22 +114,6 @@ if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-# ctrl+g ghq jump
-
-function ghql() {
-  local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
-  if [ -n "$selected_file" ]; then
-    if [ -t 1 ]; then
-      echo ${selected_file}
-      cd ${selected_file}
-      pwd
-    fi
-  fi
-}
-
-bind -x '"\201": ghql'
-bind '"\C-g":"\201\C-m"'
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -202,3 +186,21 @@ function tmux_automatically_attach_session()
     fi
 }
 tmux_automatically_attach_session
+
+
+# ctrl+g ghq jump
+
+function ghql() {
+  local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$selected_file" ]; then
+    if [ -t 1 ]; then
+      echo ${selected_file}
+      cd ${selected_file}
+      pwd
+    fi
+  fi
+}
+
+bind -x '"\201": ghql'
+bind '"\C-g":"\201\C-m"'
+
