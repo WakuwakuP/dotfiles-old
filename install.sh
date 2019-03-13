@@ -49,4 +49,4 @@ do
 done
 
 # Copy fonts
-cp -r ~/.dotfiles/.local ~/.local
+cp -r "$DOTPATH/.local" "~/.local"
