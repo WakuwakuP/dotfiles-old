@@ -47,4 +47,4 @@ do
 done
 
 # Copy fonts
-cp -r .dotfiles/.local .local
+cp -r ~/.dotfiles/.local ~/.local
