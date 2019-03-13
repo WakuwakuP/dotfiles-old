@@ -53,4 +53,3 @@ do
 
     ln -snfv "$DOTPATH/$f" "$HOME/$f"
 done
-
