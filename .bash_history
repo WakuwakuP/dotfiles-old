@@ -153,3 +153,29 @@ exit
 tmux
 brew tap
 exit
+ls
+ll
+tmux attach
+curl -L raw.githubusercontent.com/WakuwakuP/dotfiles/master/install.sh | bash
+curl -L raw.githubusercontent.com/WakuwakuP/dotfiles/master/install.sh | bash
+ls
+ll
+ls -alF
+rm .wget-hsts ..tmux.swp
+curl -L raw.githubusercontent.com/WakuwakuP/dotfiles/master/install.sh | bash
+ls
+ll
+ls -alF
+exit
+ls
+exit
+tmux
+brew install powreline-shell
+brew install powerline-shell
+powerline-shell
+pip install --user powerline-shell
+ls
+cd
+ll
+tmux
+exit
