@@ -4,9 +4,6 @@ DOTPATH=~/.dotfiles
 
 mkdir ~/.dotfiles
 
-# tmux peco ghqをインストール
-brew install tmux peco ghq
-
 # git が使えるなら git
 
 if type "git" > /dev/null 2>&1
