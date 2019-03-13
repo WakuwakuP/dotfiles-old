@@ -126,3 +126,30 @@ tmux
 exit
 echo $TMUX
 exit
+echo $PATH
+LF=$'\\\x0A' && echo $PATH | sed 's/:/'"$LF"'/g' | sort
+tmux
+.bash
+nano .bashrc
+cd .dotfiles/
+git add .
+gitpush
+git push
+git pull
+git push
+git commit -m "fix tmux homebrew"
+git config --global user.email "naoki.fujisawa@wakuwakup.net"
+git config --global user.name "WakuwakuP"
+git commit -m "fix tmux homebrew"
+git push
+ls
+git config -l
+exit
+extit
+exit
+ls
+ll
+exit
+tmux
+brew tap
+exit
