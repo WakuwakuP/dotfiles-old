@@ -4,15 +4,8 @@ DOTPATH=~/.dotfiles
 
 mkdir ~/.dotfiles
 
-# homebrew インストール
-
-if !(type "brew" > /dev/null 2>&1); then
-    echo "Install Homebrew."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    echo "eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >>~/.profile
-fi
-
-/home/linuxbrew/.linuxbrew/bin/brew install tmux peco ghq
+# tmux peco ghqをインストール
+brew install tmux peco ghq
 
 # git が使えるなら git
 
