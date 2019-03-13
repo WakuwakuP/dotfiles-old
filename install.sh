@@ -30,7 +30,7 @@ then
     mv -f dotfiles-master "$DOTPATH"
 
 else
-    die "curl or wget required"
+    echo "curl or wget required"
 fi
 
 cd ~/.dotfiles
