@@ -2,7 +2,7 @@
 
 DOTPATH=~/.dotfiles
 
-mkdir .dotfiles
+mkdir ~/.dotfiles
 
 # git が使えるなら git
 
