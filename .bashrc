@@ -188,7 +188,10 @@ function tmux_automatically_attach_session()
 tmux_automatically_attach_session
 
 
-# ctrl+g ghq jump
+# ghq setting.
+
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
 
 function ghql() {
   local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
