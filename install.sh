@@ -12,7 +12,7 @@ if !(type "brew" > /dev/null 2>&1); then
     echo "eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >>~/.profile
 fi
 
-brew install tmux peco ghq
+/home/linuxbrew/.linuxbrew/bin/brew install tmux peco ghq
 
 # git が使えるなら git
 
