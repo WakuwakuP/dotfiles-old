@@ -199,7 +199,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GOBIN=$GOPATH/bin
 
-function ghql() {
+function peco-ghql() {
   local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")
   if [ -n "$selected_file" ]; then
     if [ -t 1 ]; then
@@ -210,5 +210,38 @@ function ghql() {
   fi
 }
 
-bind -x '"\201": ghql'
-bind '"\C-g":"\201\C-m"'
+function peco-ssh() {
+  local selected_host=$(awk '
+  tolower($1)=="host" {
+    for (i=2; i<=NF; i++) {
+      if ($i !~ "[*?]") {
+       print $i
+      }
+    }
+  }
+  ' ~/.ssh/config | sort | peco --query "$LBUFFER")
+  if [ -n "$selected_host" ]; then
+    ssh ${selected_host}
+  fi
+}
+
+function peco-history() {
+  local tac
+  which gtac &> /dev/null && tac="gtac" || \
+    which tac &> /dev/null && tac="tac" || \
+    tac="tail -r"
+  READLINE_LINE=$(HISTTIMEFORMAT= history | $tac | sed -e 's/^\s*[0-9]\+\s\+//' | awk '!a[$0]++' | peco --query "$READLINE_LINE")
+  READLINE_POINT=${#READLINE_LINE}
+}
+
+function peco-buffer() {
+  local select=$(eval $READLINE_LINE | peco --query "$LBUFFER")
+  READLINE_LINE="$READLINE_LINE $select"
+  READLINE_POINT=${#READLINE_LINE}
+}
+
+bind -x '"\C-g": peco-ghql'
+bind -x '"\C-.": peco-ssh'
+bind -x '"\C-r": peco-history'
+bind -x '"\C-l": peco-buffer'
+
