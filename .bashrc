@@ -236,7 +236,7 @@ function peco-history() {
 
 function peco-buffer() {
   local select=$(eval $READLINE_LINE | peco --query "$LBUFFER")
-  READLINE_LINE="$READLINE_LINE $select"
+  READLINE_LINE="$READLINE_LINE$select"
   READLINE_POINT=${#READLINE_LINE}
 }
 
