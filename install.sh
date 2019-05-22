@@ -10,7 +10,7 @@ fi
 
 if type "git" > /dev/null 2>&1
 then
-    git clone --recursive "https://github.com/WakuwakuP/dotfiles.git" "$DOTPATH"
+    git clone --recursive "https://github.com/WakuwakuP/dotfiles-old.git" "$DOTPATH"
 
 # 使えない場合は curl か wget を使用する
 elif type "curl" || type "wget" > /dev/null 2>&1
