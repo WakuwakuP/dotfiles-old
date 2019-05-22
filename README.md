@@ -12,5 +12,5 @@ pip install powerline-shell
 ```
 
 ```bash
-curl -L raw.githubusercontent.com/WakuwakuP/dotfiles/master/install.sh | bash
+curl -L raw.githubusercontent.com/WakuwakuP/dotfiles-old/master/install.sh | bash
 ```
