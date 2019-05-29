@@ -107,10 +107,10 @@ fi
 
 # powerline-shell settings
 function _update_ps1() {
-    PS1="$(~/.local/bin/powerline-shell $?)"
+    PS1=$(powerline-shell $?)
 }
 
-if [ "$TERM" != "linux" ]; then
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
@@ -240,8 +240,26 @@ function peco-buffer() {
   READLINE_POINT=${#READLINE_LINE}
 }
 
+function t()
+{
+  tmux new-session -s $(basename $(pwd))
+}
+
+function peco-select-tmux-session()
+{
+  if [ -n "$TMUX" ]; then
+    echo 'Do not use this command in a tmux session.'
+    return 1
+  fi
+
+  local session="$(tmux list-sessions | peco | cut -d : -f 1)"
+  if [ -n "$session" ]; then
+    tmux a -t $session
+  fi
+}
+
 bind -x '"\C-g": peco-ghql'
 bind -x '"\C-a": peco-ssh'
 bind -x '"\C-r": peco-history'
 bind -x '"\C-l": peco-buffer'
-
+bind -x '"\C-t": peco-select-tmux-session'
