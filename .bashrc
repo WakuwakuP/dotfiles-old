@@ -106,13 +106,14 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # powerline-shell settings
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+# function _update_ps1() {
+#   PS1=$(powerline-shell $?)
+# }
+#
+# if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+#   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -263,3 +264,19 @@ bind -x '"\C-a": peco-ssh'
 bind -x '"\C-r": peco-history'
 bind -x '"\C-l": peco-buffer'
 bind -x '"\C-t": peco-select-tmux-session'
+
+if [ -n "$TMUX" ]; then
+  function tmux_ssh() {
+    eval server=${$#}
+    tmux new-window -n ssh:$@ "exec ssh $@"
+    tmux select-pane -P 'bg=colour53,fg=white'
+  }
+  alias ssh=tmux_ssh
+
+  function tmux_pane_ssh() {
+    eval server=${$#}
+    tmux split-pane -h -c ssh:$@ "exec ssh $@"
+    tmux select-pane -P 'bg=colour53,fg=white'
+  }
+  alias pssh=tmux_pane_ssh
+fi
