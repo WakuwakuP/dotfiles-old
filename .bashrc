@@ -277,4 +277,17 @@ if [ -n "$TMUX" ]; then
     tmux select-pane -P 'bg=colour53,fg=white'
   }
   alias pssh=tmux_pane_ssh
+
+  function ph() {
+    tmux split-pane -h "exec $*"
+  }
+  
+  function ide() {
+    tmux split-window -h
+    tmux split-window -v
+    tmux resize-pane -D 15
+    tmux select-pane -t 1
+    tmux split-window -v
+    tmux select-pane -t 1
+  }
 fi
