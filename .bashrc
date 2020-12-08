@@ -267,15 +267,13 @@ bind -x '"\C-t": peco-select-tmux-session'
 
 if [ -n "$TMUX" ]; then
   function tmux_ssh() {
-    eval server=${$#}
-    tmux new-window -n ssh:$@ "exec ssh $@"
+    tmux new-window -n ssh:$1 "exec ssh $*"
     tmux select-pane -P 'bg=colour53,fg=white'
   }
   alias ssh=tmux_ssh
 
   function tmux_pane_ssh() {
-    eval server=${$#}
-    tmux split-pane -h -c ssh:$@ "exec ssh $@"
+    tmux split-pane -h -c "ssh:$1" "exec ssh $*"
     tmux select-pane -P 'bg=colour53,fg=white'
   }
   alias pssh=tmux_pane_ssh
